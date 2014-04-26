@@ -19,7 +19,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Menu extends BasicGameState{
 
 	Animation a;
-	Camera c = new Camera(32,32);
+	Camera c = new Camera(600,600);
 	TileWorld w = new TileWorld(c, 100, 100);
 	
 	@Override
@@ -38,6 +38,7 @@ public class Menu extends BasicGameState{
 		Entity e = new Entity(a, 600,600);
 		w.addEntity(e);
 		c.setFollow(e);
+		e.setDx(10);
 	}
 
 	@Override

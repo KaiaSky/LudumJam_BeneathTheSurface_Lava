@@ -13,9 +13,6 @@ public class Entity{
 	private float dx;
 	private float dy;
 	
-	private float xLen;
-	private float yLen;
-	
 	private Animation anim;
 	
 	public Entity(Animation newAnim, float newx, float newy)
@@ -24,8 +21,6 @@ public class Entity{
 		rect = new Rectangle(newx, newy, anim.getWidth(), anim.getHeight());
 		dx = 0;
 		dy = 0;
-		xLen = anim.getWidth();
-		yLen = anim.getHeight();
 	}
 	
 	public void update(double delta, World w)
@@ -36,10 +31,7 @@ public class Entity{
 	
 	public void draw(Graphics g, Camera c)
 	{
-		System.out.println(this.getX());
-		
-		//if(this.collide(c)) // camera bounding box is screen. Nice how it all works.
-		if(true)
+		if(this.collide(c)) // camera bounding box is screen. Nice how it all works.
 		{
 			g.drawAnimation(anim, rect.getX()-c.getX(), rect.getY()-c.getY());
 		}
@@ -60,6 +52,14 @@ public class Entity{
 
 	public float getY() {
 		return rect.getY();
+	}
+	public Rectangle getRect()
+	{
+		return rect;
+	}
+	public void setRect(Rectangle newRect)
+	{
+		rect = newRect;
 	}
 
 	public void setY(float y) {
@@ -83,19 +83,19 @@ public class Entity{
 	}
 
 	public float getxLen() {
-		return xLen;
+		return rect.getWidth();
 	}
 
 	public void setxLen(float xLen) {
-		this.xLen = xLen;
+		rect.setWidth(xLen);
 	}
 
 	public float getyLen() {
-		return yLen;
+		return rect.getHeight();
 	}
 
 	public void setyLen(float yLen) {
-		this.yLen = yLen;
+		rect.setHeight(yLen);
 	}
 
 	public Animation getAnim() {
