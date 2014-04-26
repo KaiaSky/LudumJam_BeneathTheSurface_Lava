@@ -23,7 +23,7 @@ public class Menu extends BasicGameState{
 		
 		a = AnimationFactory.makeAnim("/res/testSheet.png", 64, 64, 200);
 		
-		for(int i = 0; i<800; i+=1)
+		for(int i = 0; i<20000; i+=1)
 		{
 			w.addEntity(new Entity(a, i, 100));
 		}

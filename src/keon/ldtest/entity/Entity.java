@@ -8,9 +8,6 @@ public class Entity{
 
 	Rectangle rect;
 	
-	private float x;
-	private float y;
-	
 	private float dx;
 	private float dy;
 	
@@ -38,7 +35,6 @@ public class Entity{
 	public void draw(Graphics g)
 	{
 		g.drawAnimation(anim, rect.getX(), rect.getY());
-		System.out.println(x);
 	}
 	
 	public boolean collide(Entity e)

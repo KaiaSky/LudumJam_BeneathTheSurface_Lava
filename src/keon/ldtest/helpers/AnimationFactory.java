@@ -16,12 +16,17 @@ public class AnimationFactory {
 	 * @return The animation constructed
 	 * @throws SlickException Generic Slick Exception thrown if file cannot be loaded.
 	 */
-	public static Animation makeAnim(String baseName, int num, String fileType, int duration) throws SlickException
+	public static Animation makeAnim(String baseName, int num, String fileType, int duration)
 	{
 		Image[] images = new Image[num];
 		for (int i = 0 ; i < num; i++)
 		{
-			images[i] = new Image(baseName+num+fileType);
+			try {
+				images[i] = new Image(baseName+num+fileType);
+			} catch (SlickException e) {
+				e.printStackTrace();
+				return new Animation();
+			}
 		}
 		return new Animation(images, duration);
 	}
@@ -35,12 +40,17 @@ public class AnimationFactory {
 	 * @return The animation constructed
 	 * @throws SlickException Generic Slick Exception thrown if file cannot be loaded.
 	 */
-	public static Animation makeAnim(String baseName, int num, String fileType, int durations[]) throws SlickException
+	public static Animation makeAnim(String baseName, int num, String fileType, int durations[])
 	{
 		Image[] images = new Image[num];
 		for (int i = 0 ; i < num; i++)
 		{
-			images[i] = new Image(baseName+num+fileType);
+			try {
+				images[i] = new Image(baseName+num+fileType);
+			} catch (SlickException e) {
+				e.printStackTrace();
+				return new Animation();
+			}
 		}
 		return new Animation(images, durations);
 	}
@@ -54,9 +64,15 @@ public class AnimationFactory {
 	 * @return The animation created
 	 * @throws SlickException Image isn't found
 	 */
-	public static Animation makeAnim(String spriteSheet, int xLen, int yLen, int duration) throws SlickException
+	public static Animation makeAnim(String spriteSheet, int xLen, int yLen, int duration)
 	{
-		return new Animation(new SpriteSheet(spriteSheet, xLen, yLen), duration);
+		try {
+			return new Animation(new SpriteSheet(spriteSheet, xLen, yLen), duration);
+		} catch (SlickException e) {
+			e.printStackTrace();
+			return new Animation();
+			
+		}
 	}
 	
 	/**
@@ -71,13 +87,19 @@ public class AnimationFactory {
 	 * @return The animation created
 	 * @throws SlickException Image isn't found
 	 */
-	public static Animation makeAnim(String spriteSheet, int num, int xLen, int yLen, int x1, int y1, int duration) throws SlickException
+	public static Animation makeAnim(String spriteSheet, int num, int xLen, int yLen, int x1, int y1, int duration)
 	{
-		return new Animation(new SpriteSheet(spriteSheet, xLen, yLen), x1, y1, x1, y1+num,false, duration, false);
+		try {
+			return new Animation(new SpriteSheet(spriteSheet, xLen, yLen), x1, y1, x1, y1+num,false, duration, false);
+		} catch (SlickException e) {
+			e.printStackTrace();
+			return new Animation();
+			
+		}
 	}
 	
 	/**
-	 * Used when animations can be loaded from a previousl loaded spritesheet vertically downwards and the animation is one of many in sheet.
+	 * Used when animations can be loaded from a previously loaded spritesheet vertically downwards and the animation is one of many in sheet.
 	 * @param spriteSheet The already loaded spritesheet
 	 * @param num number of frames
 	 * @param x1 First position of the animation
@@ -86,7 +108,7 @@ public class AnimationFactory {
 	 * @return The animation created
 	 * @throws SlickException Image isn't found
 	 */
-	public static Animation makeAnim(SpriteSheet spriteSheet, int num, int x1, int y1, int duration) throws SlickException
+	public static Animation makeAnim(SpriteSheet spriteSheet, int num, int x1, int y1, int duration)
 	{
 		return new Animation(spriteSheet, x1, y1, x1, y1+num,false, duration, false);
 	}

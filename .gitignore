@@ -8,6 +8,7 @@
 bin/
 lib/
 tmp/
+slick/
 *.tmp
 *.bak
 *.swp
