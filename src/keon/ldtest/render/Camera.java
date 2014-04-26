@@ -1,13 +1,12 @@
 package keon.ldtest.render;
 
-import org.newdawn.slick.Animation;
-import org.newdawn.slick.Graphics;
-
 import keon.ldtest.entity.Entity;
 import keon.ldtest.entity.World;
 import keon.ldtest.gameloop.WeekendGame;
 import keon.ldtest.helpers.AnimationFactory;
 import keon.ldtest.helpers.Config;
+
+import org.newdawn.slick.Graphics;
 
 public class Camera extends Entity{
 	
@@ -25,6 +24,7 @@ public class Camera extends Entity{
 	{
 	}
 	
+	@Override
 	public void update(double delta, World w)
 	{
 		super.update(delta, w);

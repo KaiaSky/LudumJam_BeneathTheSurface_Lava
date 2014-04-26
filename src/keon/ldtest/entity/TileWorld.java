@@ -25,6 +25,7 @@ public class TileWorld extends World{
 		tiles[x][y] = tile;
 	}
 	
+	@Override
 	public void render(Graphics g)
 	{
 		for(int x = 0; x< tiles.length; x++)

@@ -3,17 +3,11 @@ package keon.ldtest.helpers;
 import java.util.HashMap;
 
 import keon.ldtest.entity.TileWorld;
-import keon.ldtest.entity.World;
 
-import org.newdawn.slick.Animation;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Image;
 
 public class MapLoader {
-	
-	
-	private Color lava = new Color(255,0,0);
-	private Color stone = new Color(255,0,0);
 
 	public static void loadMapIntoWorld(Image map, TileWorld w)
 	{

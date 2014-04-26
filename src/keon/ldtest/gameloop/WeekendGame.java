@@ -1,8 +1,9 @@
 package keon.ldtest.gameloop;
 
-import keon.ldtest.entity.tile.Tile;
-
-import org.newdawn.slick.*;
+import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class WeekendGame extends StateBasedGame {

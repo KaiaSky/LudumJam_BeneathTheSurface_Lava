@@ -1,7 +1,6 @@
 package keon.ldtest.entity;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import keon.ldtest.render.Camera;
 
