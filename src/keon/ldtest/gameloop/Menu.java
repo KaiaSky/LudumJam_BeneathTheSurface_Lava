@@ -1,7 +1,9 @@
 package keon.ldtest.gameloop;
 
 import keon.ldtest.entity.Entity;
+import keon.ldtest.entity.TileWorld;
 import keon.ldtest.entity.World;
+import keon.ldtest.entity.tile.Tile;
 import keon.ldtest.helpers.AnimationFactory;
 
 import org.newdawn.slick.Animation;
@@ -16,16 +18,20 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Menu extends BasicGameState{
 
 	Animation a;
-	World w = new World();
+	TileWorld w = new TileWorld(100, 100);
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame game) throws SlickException {
 		
 		a = AnimationFactory.makeAnim("/res/testSheet.png", 64, 64, 200);
-		
-		for(int i = 0; i<20000; i+=1)
+
+    	Tile.setup();
+		for(int i = 0; i<100; i+=1)
 		{
-			w.addEntity(new Entity(a, i, 100));
+			for(int j = 0; j<100; j+=1)
+			{
+				w.setTileAt((char)1, i, j);
+			}
 		}
 			
 	}

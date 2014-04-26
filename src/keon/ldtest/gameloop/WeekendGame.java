@@ -1,5 +1,7 @@
 package keon.ldtest.gameloop;
 
+import keon.ldtest.entity.tile.Tile;
+
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -18,7 +20,6 @@ public class WeekendGame extends StateBasedGame {
 
     @Override
     public void initStatesList(GameContainer gc) throws SlickException {
-    	System.out.print("aaa");
         addState(new Menu());
         addState(new InGame());
     }
