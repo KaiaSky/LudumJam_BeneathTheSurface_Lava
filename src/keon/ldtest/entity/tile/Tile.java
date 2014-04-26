@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import keon.ldtest.helpers.AnimationFactory;
 import keon.ldtest.helpers.Config;
+import keon.ldtest.render.Camera;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
@@ -23,14 +24,15 @@ public class Tile {
 		mappings.put((char) 5, AnimationFactory.makeAnim(Config.grass, Config.TILESIZE, Config.TILESIZE, 200));
 	}
 	
-	public static void draw(Graphics g, char type, int x, int y)
+	public static void draw(Graphics g, char type, int x, int y, Camera c)
 	{
 		if(type == 0)
 		{
 			return;
 		}
 		else{
-			g.drawAnimation(mappings.get(type), x*Config.TILESIZE, y*Config.TILESIZE);
+			
+			g.drawAnimation(mappings.get(type), x*Config.TILESIZE-c.getX(), y*Config.TILESIZE-c.getY());
 		}
 	}
 	

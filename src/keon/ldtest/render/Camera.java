@@ -31,8 +31,12 @@ public class Camera extends Entity{
 		super.update(delta, w);
 		if(follow!= null)
 		{
-			this.setDx(follow.getX()-(this.getX()+this.cameraHeight)/20);
-			this.setDy(follow.getY()-(this.getY()+this.cameraHeight)/20);
+			System.out.println(this.getDx());
+			System.out.println(this.getDy());
+			System.out.println(this.getY());
+			System.out.println(this.getX());
+			this.setDx(((follow.getX()+follow.getxLen()/2)-(this.getX()+this.cameraWidth/2))/200);
+			this.setDy(((follow.getY()+follow.getyLen()/2)-(this.getY()+this.cameraHeight/2))/200);
 		}
 	}
 	

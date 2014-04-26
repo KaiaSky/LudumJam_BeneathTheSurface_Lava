@@ -31,7 +31,7 @@ public class TileWorld extends World{
 		{
 			for(int y = 0; y< tiles[0].length;y++)
 			{
-				Tile.draw(g, tiles[x][y], x, y);
+				Tile.draw(g, tiles[x][y], x, y, this.getCamera());
 			}
 		}
 		super.render(g);

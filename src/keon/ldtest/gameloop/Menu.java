@@ -35,7 +35,7 @@ public class Menu extends BasicGameState{
 				w.setTileAt((char)((100-j)%6), i, j);
 			}
 		}
-		Entity e = new Entity(a, 100,100);
+		Entity e = new Entity(a, 600,600);
 		w.addEntity(e);
 		c.setFollow(e);
 	}
