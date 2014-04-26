@@ -20,19 +20,12 @@ public class Menu extends BasicGameState{
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame game) throws SlickException {
-		System.out.println("beep bloop");
-		try
+		
+		a = AnimationFactory.makeAnim("/res/testSheet.png", 64, 64, 200);
+		
+		for(int i = 0; i<800; i+=1)
 		{
-			a = AnimationFactory.makeAnim("/res/testSheet.png", 64, 64, 200);
-		}catch(SlickException e){
-			e.printStackTrace();
-		}
-		for(int i = 0; i<800; i+=64)
-		{
-			for(int j = 0; j <600; j+=64)
-			{
-				w.addEntity(new Entity(a, i, j));
-			}
+			w.addEntity(new Entity(a, i, 100));
 		}
 			
 	}

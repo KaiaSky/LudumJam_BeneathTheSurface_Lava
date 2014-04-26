@@ -23,8 +23,6 @@ public class Entity{
 	{
 		anim = newAnim;
 		rect = new Rectangle(newx, newy, anim.getWidth(), anim.getHeight());
-		x = newx;
-		y = newy;
 		dx = 0;
 		dy = 0;
 		xLen = anim.getWidth();
@@ -33,14 +31,19 @@ public class Entity{
 	
 	public void update(double delta, World w)
 	{
-		x += dx;
-		y += dy;
+		rect.setX(rect.getX() + dx);
+		rect.setY(rect.getY() + dy);
 	}
 	
 	public void draw(Graphics g)
 	{
-		g.drawAnimation(anim, x, y);
+		g.drawAnimation(anim, rect.getX(), rect.getY());
 		System.out.println(x);
+	}
+	
+	public boolean collide(Entity e)
+	{
+		return this.rect.intersects(e.rect);
 	}
 
 	public float getX() {
