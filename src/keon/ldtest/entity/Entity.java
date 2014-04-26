@@ -1,5 +1,7 @@
 package keon.ldtest.entity;
 
+import keon.ldtest.render.Camera;
+
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
@@ -32,9 +34,16 @@ public class Entity{
 		rect.setY(rect.getY() + dy);
 	}
 	
-	public void draw(Graphics g)
+	public void draw(Graphics g, Camera c)
 	{
-		g.drawAnimation(anim, rect.getX(), rect.getY());
+		System.out.println(this.getX());
+		
+		//if(this.collide(c)) // camera bounding box is screen. Nice how it all works.
+		if(true)
+		{
+			System.out.println("hai");
+			g.drawAnimation(anim, rect.getX()-c.getX(), rect.getY()-c.getY());
+		}
 	}
 	
 	public boolean collide(Entity e)

@@ -5,6 +5,7 @@ import keon.ldtest.entity.TileWorld;
 import keon.ldtest.entity.World;
 import keon.ldtest.entity.tile.Tile;
 import keon.ldtest.helpers.AnimationFactory;
+import keon.ldtest.render.Camera;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
@@ -18,7 +19,8 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Menu extends BasicGameState{
 
 	Animation a;
-	TileWorld w = new TileWorld(100, 100);
+	Camera c = new Camera(32,32);
+	TileWorld w = new TileWorld(c, 100, 100);
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame game) throws SlickException {
@@ -33,7 +35,9 @@ public class Menu extends BasicGameState{
 				w.setTileAt((char)((100-j)%6), i, j);
 			}
 		}
-			
+		Entity e = new Entity(a, 100,100);
+		w.addEntity(e);
+		c.setFollow(e);
 	}
 
 	@Override

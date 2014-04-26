@@ -1,6 +1,7 @@
 package keon.ldtest.entity;
 
 import keon.ldtest.entity.tile.Tile;
+import keon.ldtest.render.Camera;
 
 import org.newdawn.slick.Graphics;
 
@@ -8,8 +9,9 @@ public class TileWorld extends World{
 
 	char[][] tiles;
 	
-	public TileWorld(int xLen, int yLen)
+	public TileWorld(Camera c, int xLen, int yLen)
 	{
+		super(c);
 		tiles = new char[xLen][yLen];
 	}
 	
@@ -25,7 +27,6 @@ public class TileWorld extends World{
 	
 	public void render(Graphics g)
 	{
-		super.render(g);
 		for(int x = 0; x< tiles.length; x++)
 		{
 			for(int y = 0; y< tiles[0].length;y++)
@@ -33,5 +34,6 @@ public class TileWorld extends World{
 				Tile.draw(g, tiles[x][y], x, y);
 			}
 		}
+		super.render(g);
 	}
 }

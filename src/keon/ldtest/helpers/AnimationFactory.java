@@ -67,9 +67,10 @@ public class AnimationFactory {
 	public static Animation makeAnim(String spriteSheet, int xLen, int yLen, int duration)
 	{
 		try {
+			System.out.println(spriteSheet);
 			return new Animation(new SpriteSheet(spriteSheet, xLen, yLen), duration);
 		} catch (SlickException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			return new Animation();
 			
 		}
