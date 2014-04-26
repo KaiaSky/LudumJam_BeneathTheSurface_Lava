@@ -30,7 +30,7 @@ public class Menu extends BasicGameState{
 		{
 			for(int j = 0; j<100; j+=1)
 			{
-				w.setTileAt((char)(j%4), i, j);
+				w.setTileAt((char)((100-j)%6), i, j);
 			}
 		}
 			

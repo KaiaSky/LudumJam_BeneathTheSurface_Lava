@@ -19,6 +19,8 @@ public class Tile {
 		mappings.put((char) 1, AnimationFactory.makeAnim(Config.stone, Config.TILESIZE, Config.TILESIZE, 200));
 		mappings.put((char) 2, AnimationFactory.makeAnim(Config.water, Config.TILESIZE, Config.TILESIZE, 200));
 		mappings.put((char) 3, AnimationFactory.makeAnim(Config.lava, Config.TILESIZE, Config.TILESIZE, 200));
+		mappings.put((char) 4, AnimationFactory.makeAnim(Config.dirt, Config.TILESIZE, Config.TILESIZE, 200));
+		mappings.put((char) 5, AnimationFactory.makeAnim(Config.grass, Config.TILESIZE, Config.TILESIZE, 200));
 	}
 	
 	public static void draw(Graphics g, char type, int x, int y)
