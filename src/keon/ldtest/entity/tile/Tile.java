@@ -17,6 +17,8 @@ public class Tile {
 		mappings = new HashMap<Character, Animation>();
 		mappings.put((char) 0, AnimationFactory.makeAnim(Config.airUnused, Config.TILESIZE, Config.TILESIZE, 200));
 		mappings.put((char) 1, AnimationFactory.makeAnim(Config.stone, Config.TILESIZE, Config.TILESIZE, 200));
+		mappings.put((char) 2, AnimationFactory.makeAnim(Config.water, Config.TILESIZE, Config.TILESIZE, 200));
+		mappings.put((char) 3, AnimationFactory.makeAnim(Config.lava, Config.TILESIZE, Config.TILESIZE, 200));
 	}
 	
 	public static void draw(Graphics g, char type, int x, int y)
