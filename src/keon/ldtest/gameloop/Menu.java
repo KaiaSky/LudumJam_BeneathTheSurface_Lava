@@ -5,6 +5,8 @@ import keon.ldtest.entity.TileWorld;
 import keon.ldtest.entity.World;
 import keon.ldtest.entity.tile.Tile;
 import keon.ldtest.helpers.AnimationFactory;
+import keon.ldtest.helpers.Config;
+import keon.ldtest.helpers.MapLoader;
 import keon.ldtest.render.Camera;
 
 import org.newdawn.slick.Animation;
@@ -19,7 +21,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Menu extends BasicGameState{
 
 	Animation a;
-	Camera c = new Camera(600,600);
+	Camera c = new Camera(-100,-100);
 	TileWorld w = new TileWorld(c, 100, 100);
 	
 	@Override
@@ -28,17 +30,11 @@ public class Menu extends BasicGameState{
 		a = AnimationFactory.makeAnim("/res/testSheet.png", 64, 64, 200);
 
     	Tile.setup();
-		for(int i = 0; i<100; i+=1)
-		{
-			for(int j = 0; j<100; j+=1)
-			{
-				w.setTileAt((char)((100-j)%6), i, j);
-			}
-		}
-		Entity e = new Entity(a, 600,600);
+		MapLoader.loadMapIntoWorld(new Image(Config.map1), w);
+		Entity e = new Entity(a, -200,800);
 		w.addEntity(e);
 		c.setFollow(e);
-		e.setDx(10);
+		e.setDx(2);
 	}
 
 	@Override
