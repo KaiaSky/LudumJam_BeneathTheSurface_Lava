@@ -5,6 +5,7 @@ import keon.ldtest.entity.World;
 import keon.ldtest.gameloop.WeekendGame;
 import keon.ldtest.helpers.AnimationFactory;
 import keon.ldtest.helpers.Config;
+import keon.ldtest.helpers.InputInfo;
 
 import org.newdawn.slick.Graphics;
 
@@ -32,6 +33,26 @@ public class Camera extends Entity{
 		{
 			this.setDx(((follow.getX()+follow.getxLen()/2)-(this.getX()+this.cameraWidth/2))/20);
 			this.setDy(((follow.getY()+follow.getyLen()/2)-(this.getY()+this.cameraHeight/2))/20);
+		}else{
+			this.setDx(this.getDx()*.9f);
+			this.setDy(this.getDy()*.9f);
+			
+			if(InputInfo.mouseX<100)
+			{
+				this.setDx(-(100-InputInfo.mouseX)/5);
+			}
+			if(InputInfo.mouseX>WeekendGame.WIDTH-100)
+			{
+				this.setDx((InputInfo.mouseX-(WeekendGame.WIDTH-100))/5);
+			}
+			if(InputInfo.mouseY<100)
+			{
+				this.setDy(-(100-InputInfo.mouseY)/5);
+			}
+			if(InputInfo.mouseY>WeekendGame.HEIGHT-100)
+			{
+				this.setDy((InputInfo.mouseY-(WeekendGame.HEIGHT-100))/5);
+			}
 		}
 	}
 	

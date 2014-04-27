@@ -11,10 +11,16 @@ public class World {
 	private ArrayList<Entity> entityList;
 	private Camera c;
 	
-	public World(Camera cam)
+	public float xmin, ymin, xmax, ymax;
+	
+	public World(Camera cam, float xMin, float yMin, float xMax, float yMax)
 	{
 		entityList = new ArrayList<Entity>();
 		c = cam;
+		xmin= xMin;
+		ymin = yMin;
+		xmax = xMax;
+		ymax = yMax;
 	}
 
 	public ArrayList<Entity> getEntityList() {

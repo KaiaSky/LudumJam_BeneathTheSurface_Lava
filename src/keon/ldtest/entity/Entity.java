@@ -27,6 +27,22 @@ public class Entity{
 	{
 		rect.setX(rect.getX() + dx);
 		rect.setY(rect.getY() + dy);
+		if(rect.getMinX()<w.xmin)
+		{
+			rect.setX(w.xmin);
+		}
+		if(rect.getMaxX()>w.xmax)
+		{
+			rect.setX(w.xmax - rect.getWidth());
+		}
+		if(rect.getMinY()<w.ymin)
+		{
+			rect.setY(w.ymin);
+		}
+		if(rect.getMaxY()>w.ymax)
+		{
+			rect.setY(w.ymax - rect.getHeight());
+		}
 	}
 	
 	public void draw(Graphics g, Camera c)
