@@ -4,16 +4,18 @@ import java.util.ArrayList;
 
 import keon.ldtest.render.Camera;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
 
 public class World {
 
 	private ArrayList<Entity> entityList;
 	private Camera c;
+	private Animation bg;
 	
 	public float xmin, ymin, xmax, ymax;
 	
-	public World(Camera cam, float xMin, float yMin, float xMax, float yMax)
+	public World(Camera cam, float xMin, float yMin, float xMax, float yMax, Animation background)
 	{
 		entityList = new ArrayList<Entity>();
 		c = cam;
@@ -21,6 +23,7 @@ public class World {
 		ymin = yMin;
 		xmax = xMax;
 		ymax = yMax;
+		bg = background;
 	}
 
 	public ArrayList<Entity> getEntityList() {
@@ -77,10 +80,14 @@ public class World {
 	
 	public void render(Graphics g)
 	{
-		c.draw(g);
 		for(int i = 0; i < this.entityList.size(); i++)
 		{
 			this.entityList.get(i).draw(g, c);
 		}
+	}
+	
+	public void renderBG(Graphics g)
+	{
+		g.drawAnimation(bg, 0,0);
 	}
 }

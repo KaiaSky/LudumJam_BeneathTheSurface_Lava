@@ -2,6 +2,10 @@ package keon.ldtest.helpers;
 
 public class Config {
 	public static int TILESIZE = 32;
+	
+	public static String sky = "/res/sky.png";
+	public static String title = "res/title.png";
+	
 	public static String airUnused = "/res/air.png";
 	public static String stone = "/res/stone.png";
 	public static String water = "/res/water.png";

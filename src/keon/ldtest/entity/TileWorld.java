@@ -5,6 +5,7 @@ import keon.ldtest.helpers.Config;
 import keon.ldtest.helpers.InputInfo;
 import keon.ldtest.render.Camera;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
 
 public class TileWorld extends World{
@@ -12,9 +13,9 @@ public class TileWorld extends World{
 	char[][] tiles;
 	int tileTimer = 0;
 	
-	public TileWorld(Camera c, int xLen, int yLen)
+	public TileWorld(Camera c, int xLen, int yLen, Animation background)
 	{
-		super(c, 0,0, xLen*Config.TILESIZE,yLen*Config.TILESIZE);
+		super(c, 0,0, xLen*Config.TILESIZE,yLen*Config.TILESIZE, background);
 		tiles = new char[xLen][yLen];
 	}
 	
@@ -56,6 +57,7 @@ public class TileWorld extends World{
 	@Override
 	public void render(Graphics g)
 	{
+		super.renderBG(g);
 		for(int x = 0; x< tiles.length; x++)
 		{
 			for(int y = 0; y< tiles[0].length;y++)

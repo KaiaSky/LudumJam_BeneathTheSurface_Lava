@@ -19,9 +19,9 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class InGame extends BasicGameState{
 
-	Animation a;
+	Animation a = AnimationFactory.makeAnim(Config.sky, 800, 600, 1000);
 	Camera c = new Camera(600,600);
-	TileWorld w = new TileWorld(c, 100, 50);
+	TileWorld w = new TileWorld(c, 100, 50, a);
 	
 	float mouseX = 0;
 	float mouseY = 0;
@@ -30,12 +30,9 @@ public class InGame extends BasicGameState{
 	@Override
 	public void init(GameContainer gc, StateBasedGame game) throws SlickException {
 		
-		a = AnimationFactory.makeAnim("/res/testSheet.png", 64, 64, 200);
 
     	TileHandler.setup();
 		MapLoader.loadMapIntoWorld(new Image(Config.map1), w);
-		Entity e = new Entity(a, 600,600);
-		w.addEntity(e);
 	}
 
 	@Override
