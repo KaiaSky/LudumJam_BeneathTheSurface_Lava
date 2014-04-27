@@ -21,4 +21,5 @@ public class Config {
 	public static String scannerunpowered = "/res/scanner_nopower.png";
 	public static String wire = "/res/wire.png";
 	public static String windmill = "/res/windmill.png";
+	public static String invis = "/res/invis.png";
 }

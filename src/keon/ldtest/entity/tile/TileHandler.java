@@ -5,6 +5,7 @@ import java.util.HashMap;
 import keon.ldtest.entity.tile.manmade.TileDrill;
 import keon.ldtest.entity.tile.manmade.TileDrillUnpowered;
 import keon.ldtest.entity.tile.manmade.TileWire;
+import keon.ldtest.entity.tiledata.TileData;
 import keon.ldtest.helpers.AnimationFactory;
 import keon.ldtest.helpers.Config;
 import keon.ldtest.render.Camera;
@@ -31,6 +32,7 @@ public class TileHandler {
 		anims.put((char) 8, AnimationFactory.makeAnim(Config.wire, Config.TILESIZE, Config.TILESIZE, 200));
 		anims.put((char) 9, AnimationFactory.makeAnim(Config.drill, Config.TILESIZE, Config.TILESIZE, 200));
 		anims.put((char) 10, AnimationFactory.makeAnim(Config.drillunpowered, Config.TILESIZE, Config.TILESIZE, 200));
+		anims.put((char) 255, AnimationFactory.makeAnim(Config.invis, Config.TILESIZE, Config.TILESIZE, 200));
 		
 		tiles = new HashMap<Character,BasicTile>();
 
@@ -47,19 +49,24 @@ public class TileHandler {
 		tiles.put((char) 10, new TileDrillUnpowered());
 	}
 	
-	public static void draw(Graphics g, char type, int x, int y, Camera c)
+	public static void draw(Graphics g, char type, int x, int y, Camera c, TileData extra)
 	{
-		if(type == 0)
+		if(extra.visible)
 		{
-			return;
-		}
-		else{
-			
-			g.drawAnimation(anims.get(type), x*Config.TILESIZE-c.getX(), y*Config.TILESIZE-c.getY());
+			if(type == 0)
+			{
+				return;
+			}
+			else{
+				g.drawAnimation(anims.get(type), x*Config.TILESIZE-c.getX(), y*Config.TILESIZE-c.getY());
+			}
+		}else
+		{
+			g.drawAnimation(anims.get((char)255), x*Config.TILESIZE-c.getX(), y*Config.TILESIZE-c.getY());
 		}
 	}
 	
-	public static void update(char type, char[][] tileList, int x, int y)
+	public static void update(char type, char[][] tileList, int x, int y, TileData extra)
 	{
 		tiles.get(type).update(x, y,tileList);
 	}

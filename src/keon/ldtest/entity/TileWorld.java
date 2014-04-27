@@ -1,7 +1,7 @@
 package keon.ldtest.entity;
 
 import keon.ldtest.entity.tile.TileHandler;
-import keon.ldtest.entity.tiledata.ExtraData;
+import keon.ldtest.entity.tiledata.TileData;
 import keon.ldtest.helpers.Config;
 import keon.ldtest.helpers.InputInfo;
 import keon.ldtest.render.Camera;
@@ -13,13 +13,20 @@ public class TileWorld extends World{
 
 	char[][] tiles;
 	int tileTimer = 0;
-	ExtraData[][] tileData;
+	TileData[][] tileData;
 	
 	public TileWorld(Camera c, int xLen, int yLen, Animation background)
 	{
 		super(c, 0,0, xLen*Config.TILESIZE,yLen*Config.TILESIZE, background);
 		tiles = new char[xLen][yLen];
-		tileData = new ExtraData[xLen][yLen];
+		tileData = new TileData[xLen][yLen];
+		for(int i = 0; i<xLen;i++)
+		{
+			for(int j=0;j<yLen;j++)
+			{
+				tileData[i][j] = new TileData();
+			}
+		}
 	}
 	
 	public char getTileAt(int x, int y)
@@ -32,12 +39,12 @@ public class TileWorld extends World{
 		return tiles[(int)(x/Config.TILESIZE)][(int)(y/Config.TILESIZE)];
 	}
 	
-	public ExtraData getTileDataAt(int x, int y)
+	public TileData getTileDataAt(int x, int y)
 	{
 		return tileData[x][y];
 	}
 	
-	public ExtraData getTileDataFromPos(float x, float y)
+	public TileData getTileDataFromPos(float x, float y)
 	{
 		return tileData[(int)(x/Config.TILESIZE)][(int)(y/Config.TILESIZE)];
 	}
@@ -52,7 +59,7 @@ public class TileWorld extends World{
 		return tiles[(int)((InputInfo.mouseX+this.getCamera().getX())/Config.TILESIZE)][(int)((InputInfo.mouseY+this.getCamera().getY())/Config.TILESIZE)];
 	}
 	
-	public ExtraData getTileDataOfMouse()
+	public TileData getTileDataOfMouse()
 	{
 		return tileData[(int)((InputInfo.mouseX+this.getCamera().getX())/Config.TILESIZE)][(int)((InputInfo.mouseY+this.getCamera().getY())/Config.TILESIZE)];
 	}
@@ -80,7 +87,7 @@ public class TileWorld extends World{
 		{
 			for(int y = 0; y< tiles[0].length;y++)
 			{
-				TileHandler.draw(g, tiles[x][y], x, y, this.getCamera());
+				TileHandler.draw(g, tiles[x][y], x, y, this.getCamera(), tileData[x][y]);
 			}
 		}
 		super.render(g);
@@ -98,7 +105,7 @@ public class TileWorld extends World{
 			{
 				for(int y = tiles[0].length-1; y>=0 ;y--)
 				{
-					TileHandler.update(tiles[x][y], tiles, x, y);
+					TileHandler.update(tiles[x][y], tiles, x, y, tileData[x][y]);
 				}
 			}
 		}
