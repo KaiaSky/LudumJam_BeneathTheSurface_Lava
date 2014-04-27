@@ -50,7 +50,7 @@ public class TileWorld extends World{
 		{
 			for(int x = 0; x< tiles.length; x++)
 			{
-				for(int y = 0; y< tiles[0].length;y++)
+				for(int y = tiles[0].length-1; y>=0 ;y--)
 				{
 					TileHandler.update(tiles[x][y], tiles, x, y);
 				}
