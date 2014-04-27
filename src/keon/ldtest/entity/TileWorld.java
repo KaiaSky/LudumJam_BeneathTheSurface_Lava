@@ -2,6 +2,7 @@ package keon.ldtest.entity;
 
 import keon.ldtest.entity.tile.TileHandler;
 import keon.ldtest.helpers.Config;
+import keon.ldtest.helpers.InputInfo;
 import keon.ldtest.render.Camera;
 
 import org.newdawn.slick.Graphics;
@@ -20,6 +21,31 @@ public class TileWorld extends World{
 	public char getTileAt(int x, int y)
 	{
 		return tiles[x][y];
+	}
+	
+	public char getTileFromPos(float x, float y)
+	{
+		return tiles[(int)(x/Config.TILESIZE)][(int)(y/Config.TILESIZE)];
+	}
+	
+	public int toTilePos(float x)
+	{
+		return (int)(x/Config.TILESIZE);
+	}
+	
+	public char getTileOfMouse()
+	{
+		return tiles[(int)((InputInfo.mouseX+this.getCamera().getX())/Config.TILESIZE)][(int)((InputInfo.mouseY+this.getCamera().getY())/Config.TILESIZE)];
+	}
+	
+	public int getMouseXPos()
+	{
+		return (int)((InputInfo.mouseX + this.getCamera().getX())/Config.TILESIZE);
+	}
+	
+	public int getMouseYPos()
+	{
+		return (int)((InputInfo.mouseY + this.getCamera().getY())/Config.TILESIZE);
 	}
 	
 	public void setTileAt(char tile, int x, int y)

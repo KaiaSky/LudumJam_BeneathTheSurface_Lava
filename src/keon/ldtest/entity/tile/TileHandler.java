@@ -2,6 +2,9 @@ package keon.ldtest.entity.tile;
 
 import java.util.HashMap;
 
+import keon.ldtest.entity.tile.manmade.TileDrill;
+import keon.ldtest.entity.tile.manmade.TileDrillUnpowered;
+import keon.ldtest.entity.tile.manmade.TileWire;
 import keon.ldtest.helpers.AnimationFactory;
 import keon.ldtest.helpers.Config;
 import keon.ldtest.render.Camera;
@@ -25,6 +28,9 @@ public class TileHandler {
 		anims.put((char) 5, AnimationFactory.makeAnim(Config.grass, Config.TILESIZE, Config.TILESIZE, 200));
 		anims.put((char) 6, AnimationFactory.makeAnim(Config.lava, Config.TILESIZE, Config.TILESIZE, 200));
 		anims.put((char) 7, AnimationFactory.makeAnim(Config.water, Config.TILESIZE, Config.TILESIZE, 200));
+		anims.put((char) 8, AnimationFactory.makeAnim(Config.wire, Config.TILESIZE, Config.TILESIZE, 200));
+		anims.put((char) 9, AnimationFactory.makeAnim(Config.drill, Config.TILESIZE, Config.TILESIZE, 200));
+		anims.put((char) 10, AnimationFactory.makeAnim(Config.drillunpowered, Config.TILESIZE, Config.TILESIZE, 200));
 		
 		tiles = new HashMap<Character,BasicTile>();
 
@@ -36,6 +42,9 @@ public class TileHandler {
 		tiles.put((char) 5, new TileGrass());
 		tiles.put((char) 6, new TileStillLava());
 		tiles.put((char) 7, new TileStillWater());
+		tiles.put((char) 8, new TileWire());
+		tiles.put((char) 9, new TileDrill());
+		tiles.put((char) 10, new TileDrillUnpowered());
 	}
 	
 	public static void draw(Graphics g, char type, int x, int y, Camera c)

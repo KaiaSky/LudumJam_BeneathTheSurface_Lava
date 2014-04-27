@@ -36,8 +36,6 @@ public class InGame extends BasicGameState{
 		MapLoader.loadMapIntoWorld(new Image(Config.map1), w);
 		Entity e = new Entity(a, 600,600);
 		w.addEntity(e);
-		//c.setFollow(e);
-		//e.setDx(10);
 	}
 
 	@Override
@@ -58,6 +56,10 @@ public class InGame extends BasicGameState{
 		return 1;
 	}
 	
+	@Override
+	public void mouseClicked(int button, int x, int y, int clickCount) {
+		w.setTileAt((char)9, w.getMouseXPos(), w.getMouseYPos());
+	}
 	
 
 }
