@@ -24,6 +24,7 @@ public class TileHandler {
 		anims.put((char) 4, AnimationFactory.makeAnim(Config.dirt, Config.TILESIZE, Config.TILESIZE, 200));
 		anims.put((char) 5, AnimationFactory.makeAnim(Config.grass, Config.TILESIZE, Config.TILESIZE, 200));
 		anims.put((char) 6, AnimationFactory.makeAnim(Config.lava, Config.TILESIZE, Config.TILESIZE, 200));
+		anims.put((char) 7, AnimationFactory.makeAnim(Config.water, Config.TILESIZE, Config.TILESIZE, 200));
 		
 		tiles = new HashMap<Character,BasicTile>();
 
@@ -34,6 +35,7 @@ public class TileHandler {
 		tiles.put((char) 4, new TileDirt());
 		tiles.put((char) 5, new TileGrass());
 		tiles.put((char) 6, new TileStillLava());
+		tiles.put((char) 7, new TileStillWater());
 	}
 	
 	public static void draw(Graphics g, char type, int x, int y, Camera c)
