@@ -1,6 +1,7 @@
 package keon.ldtest.entity;
 
 import keon.ldtest.entity.tile.TileHandler;
+import keon.ldtest.entity.tiledata.ExtraData;
 import keon.ldtest.helpers.Config;
 import keon.ldtest.helpers.InputInfo;
 import keon.ldtest.render.Camera;
@@ -12,11 +13,13 @@ public class TileWorld extends World{
 
 	char[][] tiles;
 	int tileTimer = 0;
+	ExtraData[][] tileData;
 	
 	public TileWorld(Camera c, int xLen, int yLen, Animation background)
 	{
 		super(c, 0,0, xLen*Config.TILESIZE,yLen*Config.TILESIZE, background);
 		tiles = new char[xLen][yLen];
+		tileData = new ExtraData[xLen][yLen];
 	}
 	
 	public char getTileAt(int x, int y)
@@ -29,6 +32,16 @@ public class TileWorld extends World{
 		return tiles[(int)(x/Config.TILESIZE)][(int)(y/Config.TILESIZE)];
 	}
 	
+	public ExtraData getTileDataAt(int x, int y)
+	{
+		return tileData[x][y];
+	}
+	
+	public ExtraData getTileDataFromPos(float x, float y)
+	{
+		return tileData[(int)(x/Config.TILESIZE)][(int)(y/Config.TILESIZE)];
+	}
+	
 	public int toTilePos(float x)
 	{
 		return (int)(x/Config.TILESIZE);
@@ -37,6 +50,11 @@ public class TileWorld extends World{
 	public char getTileOfMouse()
 	{
 		return tiles[(int)((InputInfo.mouseX+this.getCamera().getX())/Config.TILESIZE)][(int)((InputInfo.mouseY+this.getCamera().getY())/Config.TILESIZE)];
+	}
+	
+	public ExtraData getTileDataOfMouse()
+	{
+		return tileData[(int)((InputInfo.mouseX+this.getCamera().getX())/Config.TILESIZE)][(int)((InputInfo.mouseY+this.getCamera().getY())/Config.TILESIZE)];
 	}
 	
 	public int getMouseXPos()
