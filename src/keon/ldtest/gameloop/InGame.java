@@ -2,7 +2,7 @@ package keon.ldtest.gameloop;
 
 import keon.ldtest.entity.Entity;
 import keon.ldtest.entity.TileWorld;
-import keon.ldtest.entity.tile.Tile;
+import keon.ldtest.entity.tile.TileHandler;
 import keon.ldtest.helpers.AnimationFactory;
 import keon.ldtest.helpers.Config;
 import keon.ldtest.helpers.InputInfo;
@@ -32,7 +32,7 @@ public class InGame extends BasicGameState{
 		
 		a = AnimationFactory.makeAnim("/res/testSheet.png", 64, 64, 200);
 
-    	Tile.setup();
+    	TileHandler.setup();
 		MapLoader.loadMapIntoWorld(new Image(Config.map1), w);
 		Entity e = new Entity(a, 600,600);
 		w.addEntity(e);

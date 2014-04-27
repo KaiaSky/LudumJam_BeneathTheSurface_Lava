@@ -1,6 +1,6 @@
 package keon.ldtest.entity;
 
-import keon.ldtest.entity.tile.Tile;
+import keon.ldtest.entity.tile.TileHandler;
 import keon.ldtest.helpers.Config;
 import keon.ldtest.render.Camera;
 
@@ -9,6 +9,7 @@ import org.newdawn.slick.Graphics;
 public class TileWorld extends World{
 
 	char[][] tiles;
+	int tileTimer = 0;
 	
 	public TileWorld(Camera c, int xLen, int yLen)
 	{
@@ -33,9 +34,28 @@ public class TileWorld extends World{
 		{
 			for(int y = 0; y< tiles[0].length;y++)
 			{
-				Tile.draw(g, tiles[x][y], x, y, this.getCamera());
+				TileHandler.draw(g, tiles[x][y], x, y, this.getCamera());
 			}
 		}
 		super.render(g);
+	}
+	
+	@Override
+	public void updateAll(double delta)
+	{
+		tileTimer++;
+		tileTimer %=10;
+		super.updateAll(delta);
+		if(tileTimer == 0)
+		{
+			for(int x = 0; x< tiles.length; x++)
+			{
+				for(int y = 0; y< tiles[0].length;y++)
+				{
+					TileHandler.update(tiles[x][y], tiles);
+				}
+			}
+		}
+		
 	}
 }
