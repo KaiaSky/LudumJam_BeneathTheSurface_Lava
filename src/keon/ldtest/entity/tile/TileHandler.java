@@ -46,9 +46,9 @@ public class TileHandler {
 		}
 	}
 	
-	public static void update(char type, char[][] tileList)
+	public static void update(char type, char[][] tileList, int x, int y)
 	{
-		tiles.get(type).update(tileList);
+		tiles.get(type).update(x, y,tileList);
 	}
 	
 }

@@ -44,7 +44,7 @@ public class TileWorld extends World{
 	public void updateAll(double delta)
 	{
 		tileTimer++;
-		tileTimer %=10;
+		tileTimer %=20;
 		super.updateAll(delta);
 		if(tileTimer == 0)
 		{
@@ -52,7 +52,7 @@ public class TileWorld extends World{
 			{
 				for(int y = 0; y< tiles[0].length;y++)
 				{
-					TileHandler.update(tiles[x][y], tiles);
+					TileHandler.update(tiles[x][y], tiles, x, y);
 				}
 			}
 		}
