@@ -1,24 +1,13 @@
 package keon.ldtest.entity.tile.manmade;
 
 import keon.ldtest.entity.tile.BasicTile;
-import keon.ldtest.entity.tiledata.HQData;
 import keon.ldtest.entity.tiledata.TileData;
 
 public class TileHQ extends BasicTile{
-	
-	public void setup()
-	{
-		this.setTileData(new HQData());
-	}
-	
+
 	public void update(int x, int y, char[][] tileList, TileData data, TileData[][] dataList)
 	{
-		((HQData)data).timer++;
-		((HQData)data).timer%=5;
-		if(((HQData)data).timer==0)
-		{
-			doFloodfill(x,y,tileList,dataList,8);
-		}
+		doFloodfill(x,y,tileList,dataList,8);
 	}
 	
 	private static void doFloodfill(int x, int y, char[][] tiles, TileData[][] extra, int length)

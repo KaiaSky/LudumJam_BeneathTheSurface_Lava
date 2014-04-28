@@ -50,11 +50,6 @@ public class TileHandler {
 		tiles.put((char) 9, new TileDrill());
 		tiles.put((char) 10, new TileDrillUnpowered());
 		tiles.put((char) 11, new TileHQ());
-		
-		for(int i = 0; i<11; i++)
-		{
-			tiles.get((char)i).setup();
-		}
 	}
 	
 	public static void draw(Graphics g, char type, int x, int y, Camera c, TileData extra)
