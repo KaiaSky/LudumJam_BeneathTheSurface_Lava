@@ -6,48 +6,48 @@ public class TileLava extends BasicTile{
 
 	public int id = 3;
 	
-	public void update(int x, int y, char[][] tileList)
+	public void update(int x, int y, char[][] tiles)
 	{
-		if(y<tileList[0].length-1 && tileList[x][y+1]==(char)0) // drop down 1
+		if(y<tiles[0].length-1 && tiles[x][y+1]==(char)0) // drop down 1
 		{
-			tileList[x][y] = (char)0;
-			tileList[x][y+1] = (char)6;
+			tiles[x][y] = (char)0;
+			tiles[x][y+1] = (char)6;
 			return;
 		}
-		if(y<tileList[0].length-1 && x>0 && tileList[x-1][y+1]==(char)0) // drop down 1
+		if(y<tiles[0].length-1 && x>0 && tiles[x-1][y+1]==(char)0) // drop down 1
 		{
-			tileList[x][y] = (char)0;
-			tileList[x-1][y+1] = (char)6;
+			tiles[x][y] = (char)0;
+			tiles[x-1][y+1] = (char)6;
 			return;
 		}
-		if(y<tileList[0].length-1 &&  x<tileList.length-1 &&tileList[x+1][y+1]==(char)0) // drop down 1
+		if(y<tiles[0].length-1 &&  x<tiles.length-1 &&tiles[x+1][y+1]==(char)0) // drop down 1
 		{
-			tileList[x][y] = (char)0;
-			tileList[x+1][y+1] = (char)6;
+			tiles[x][y] = (char)0;
+			tiles[x+1][y+1] = (char)6;
 			return;
 		}
-		if(x>0 && x<tileList.length-1 &&tileList[x-1][y]==(char)0 && tileList[x+1][y]!=(char)0) // slide left
+		if(x>0 && x<tiles.length-1 &&tiles[x-1][y]==(char)0 && tiles[x+1][y]!=(char)0) // slide left
 		{
-			tileList[x][y] = (char)0;
-			tileList[x-1][y] = (char)6;
+			tiles[x][y] = (char)0;
+			tiles[x-1][y] = (char)6;
 			return;
 		}
-		if(x>0 && x<tileList.length-1 && tileList[x+1][y]==(char)0 && tileList[x-1][y]!=(char)0) // slide right
+		if(x>0 && x<tiles.length-1 && tiles[x+1][y]==(char)0 && tiles[x-1][y]!=(char)0) // slide right
 		{
-			tileList[x][y] = (char)0;
-			tileList[x+1][y] = (char)6;
+			tiles[x][y] = (char)0;
+			tiles[x+1][y] = (char)6;
 			return;
 		}
-		if(x>0 && x<tileList.length-1 && tileList[x+1][y]==(char)0 && tileList[x-1][y]==(char)0)
+		if(x>0 && x<tiles.length-1 && tiles[x+1][y]==(char)0 && tiles[x-1][y]==(char)0)
 		{
 			if(RandomHolder.RANDOM.nextBoolean())
 			{
-				tileList[x][y] = (char)0;
-				tileList[x+1][y] = (char)6;
+				tiles[x][y] = (char)0;
+				tiles[x+1][y] = (char)6;
 				return;
 			}else{
-				tileList[x][y] = (char)0;
-				tileList[x-1][y] = (char)6;
+				tiles[x][y] = (char)0;
+				tiles[x-1][y] = (char)6;
 				return;
 			}
 		}

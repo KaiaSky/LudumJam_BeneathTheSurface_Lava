@@ -77,6 +77,18 @@ public class TileWorld extends World{
 	public void setTileAt(char tile, int x, int y)
 	{
 		tiles[x][y] = tile;
+		try {
+			setTileDataAt(TileHandler.tiles.get(tile).data.getClass().newInstance(),x,y);
+			System.err.println((int)tile + " "+ getTileDataAt(x,y));
+		} catch (InstantiationException | IllegalAccessException e) {
+			e.printStackTrace();
+			System.err.println("errored");
+		}
+	}
+	
+	public void setTileDataAt(TileData tiledat, int x, int y)
+	{
+		tileData[x][y] = tiledat;
 	}
 	
 	@Override
