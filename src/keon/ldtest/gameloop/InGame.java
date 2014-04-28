@@ -33,6 +33,7 @@ public class InGame extends BasicGameState{
 
     	TileHandler.setup();
 		MapLoader.loadMapIntoWorld(new Image(Config.map1), w);
+		w.setTileAt((char)11, 25, 25);
 	}
 
 	@Override

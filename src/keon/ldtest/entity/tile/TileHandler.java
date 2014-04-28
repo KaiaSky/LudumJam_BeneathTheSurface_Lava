@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import keon.ldtest.entity.tile.manmade.TileDrill;
 import keon.ldtest.entity.tile.manmade.TileDrillUnpowered;
+import keon.ldtest.entity.tile.manmade.TileHQ;
 import keon.ldtest.entity.tile.manmade.TileWire;
 import keon.ldtest.entity.tiledata.TileData;
 import keon.ldtest.helpers.AnimationFactory;
@@ -32,6 +33,7 @@ public class TileHandler {
 		anims.put((char) 8, AnimationFactory.makeAnim(Config.wire, Config.TILESIZE, Config.TILESIZE, 200));
 		anims.put((char) 9, AnimationFactory.makeAnim(Config.drill, Config.TILESIZE, Config.TILESIZE, 200));
 		anims.put((char) 10, AnimationFactory.makeAnim(Config.drillunpowered, Config.TILESIZE, Config.TILESIZE, 200));
+		anims.put((char) 11, AnimationFactory.makeAnim(Config.hq, Config.TILESIZE, Config.TILESIZE, 200));
 		anims.put((char) 255, AnimationFactory.makeAnim(Config.invis, Config.TILESIZE, Config.TILESIZE, 200));
 		
 		tiles = new HashMap<Character,BasicTile>();
@@ -47,6 +49,7 @@ public class TileHandler {
 		tiles.put((char) 8, new TileWire());
 		tiles.put((char) 9, new TileDrill());
 		tiles.put((char) 10, new TileDrillUnpowered());
+		tiles.put((char) 11, new TileHQ());
 	}
 	
 	public static void draw(Graphics g, char type, int x, int y, Camera c, TileData extra)
@@ -66,9 +69,9 @@ public class TileHandler {
 		}
 	}
 	
-	public static void update(char type, char[][] tileList, int x, int y, TileData extra)
+	public static void update(char type, char[][] tileList, int x, int y, TileData data, TileData[][] dataList)
 	{
-		tiles.get(type).update(x, y,tileList);
+		tiles.get(type).update(x, y,tileList, data, dataList);
 	}
 	
 }

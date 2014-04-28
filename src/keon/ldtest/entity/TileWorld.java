@@ -105,7 +105,7 @@ public class TileWorld extends World{
 			{
 				for(int y = tiles[0].length-1; y>=0 ;y--)
 				{
-					TileHandler.update(tiles[x][y], tiles, x, y, tileData[x][y]);
+					TileHandler.update(tiles[x][y], tiles, x, y, tileData[x][y], tileData);
 				}
 			}
 		}

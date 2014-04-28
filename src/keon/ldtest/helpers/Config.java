@@ -22,4 +22,5 @@ public class Config {
 	public static String wire = "/res/wire.png";
 	public static String windmill = "/res/windmill.png";
 	public static String invis = "/res/invis.png";
+	public static String hq = "/res/base.png";
 }
