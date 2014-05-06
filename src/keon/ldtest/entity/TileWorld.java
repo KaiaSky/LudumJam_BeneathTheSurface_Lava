@@ -14,6 +14,7 @@ public class TileWorld extends World{
 	char[][] tiles;
 	int tileTimer = 0;
 	TileData[][] tileData;
+	private int xLen, yLen;
 	
 	public TileWorld(Camera c, int xLen, int yLen, Animation background)
 	{
@@ -105,10 +106,19 @@ public class TileWorld extends World{
 			{
 				for(int y = tiles[0].length-1; y>=0 ;y--)
 				{
-					TileHandler.update(tiles[x][y], tiles, x, y, tileData[x][y], tileData);
+					TileHandler.update(tiles[x][y], this, x, y, tileData[x][y]);
 				}
 			}
 		}
 		
+	}
+	
+	public int getXLen()
+	{
+		return this.xLen;
+	}
+	public int getYLen()
+	{
+		return this.yLen;
 	}
 }

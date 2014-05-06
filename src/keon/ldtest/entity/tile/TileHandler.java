@@ -10,6 +10,7 @@ import keon.ldtest.entity.tiledata.TileData;
 import keon.ldtest.helpers.AnimationFactory;
 import keon.ldtest.helpers.Config;
 import keon.ldtest.render.Camera;
+import keon.ldtest.entity.TileWorld;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;
@@ -69,9 +70,9 @@ public class TileHandler {
 		}
 	}
 	
-	public static void update(char type, char[][] tileList, int x, int y, TileData data, TileData[][] dataList)
+	public static void update(char type, TileWorld w, int x, int y, TileData data)
 	{
-		tiles.get(type).update(x, y,tileList, data, dataList);
+		tiles.get(type).update(x, y, w, data);
 	}
 	
 }

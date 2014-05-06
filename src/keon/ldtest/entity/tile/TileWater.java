@@ -1,57 +1,59 @@
 package keon.ldtest.entity.tile;
 
+import keon.ldtest.entity.TileWorld;
 import keon.ldtest.helpers.RandomHolder;
+import keon.ldtest.entity.tiledata.*;
 
 public class TileWater extends BasicTile{
 
 	public int id = 2;
 	
-	public void update(int x, int y, char[][] tileList)
+	@Override
+	public void update(int x, int y, TileWorld w, TileData data)
 	{
-		if(y<tileList[0].length-1 && tileList[x][y+1]==(char)0) // drop down 1
+		if(y<w.getYLen()-1 && w.getTileAt(x, y+1)==(char)0) // drop down 1
 		{
-			tileList[x][y] = (char)0;
-			tileList[x][y+1] = (char)7;
+			w.setTileAt((char)0, x, y);
+			w.setTileAt((char)7, x, y+1);
 			return;
 		}
-		if(y<tileList[0].length-1 && x>0 && tileList[x-1][y+1]==(char)0) // drop down 1
+		if(y<w.getYLen()-1 && x>0 && w.getTileAt(x-1, y+1)==(char)0) // drop down 1 left 1
 		{
-			tileList[x][y] = (char)0;
-			tileList[x-1][y+1] = (char)7;
+			w.setTileAt((char)0, x, y);
+			w.setTileAt((char)7, x-1, y+1);
 			return;
 		}
-		if(y<tileList[0].length-1 &&  x<tileList.length-1 &&tileList[x+1][y+1]==(char)0) // drop down 1
+		if(y<w.getYLen()-1 &&  x<w.getXLen()-1 &&w.getTileAt(x+1, y+1)==(char)0) // drop down 1 right 1
 		{
-			tileList[x][y] = (char)0;
-			tileList[x+1][y+1] = (char)7;
+			w.setTileAt((char)0, x, y);
+			w.setTileAt((char)7, x+1, y+1);
 			return;
 		}
-		if(x>0 && x<tileList.length-1 &&tileList[x-1][y]==(char)0 && tileList[x+1][y]!=(char)0) // slide left
+		if(x>0 && x<w.getXLen()-1 &&w.getTileAt(x-1, y)==(char)0 && w.getTileAt(x+1, y)!=(char)0) // slide left
 		{
-			tileList[x][y] = (char)0;
-			tileList[x-1][y] = (char)7;
+			w.setTileAt((char)0, x, y);
+			w.setTileAt((char)7, x-1, y);
 			return;
 		}
-		if(x>0 && x<tileList.length-1 && tileList[x+1][y]==(char)0 && tileList[x-1][y]!=(char)0) // slide right
+		if(x>0 && x<w.getXLen()-1 && w.getTileAt(x+1, y)==(char)0 && w.getTileAt(x-1, y)!=(char)0) // slide right
 		{
-			tileList[x][y] = (char)0;
-			tileList[x+1][y] = (char)7;
+			w.setTileAt((char)0, x, y);
+			w.setTileAt((char)7, x+1, y);
 			return;
 		}
-		if(x>0 && x<tileList.length-1 && tileList[x+1][y]==(char)0 && tileList[x-1][y]==(char)0)
+		if(x>0 && x<w.getXLen()-1 && w.getTileAt(x+1, y)==(char)0 && w.getTileAt(x-1, y)==(char)0)
 		{
 			if(RandomHolder.RANDOM.nextBoolean())
 			{
-				tileList[x][y] = (char)0;
-				tileList[x+1][y] = (char)7;
+				w.setTileAt((char)0, x, y);
+				w.setTileAt((char)7, x+1, y);
 				return;
 			}else{
-				tileList[x][y] = (char)0;
-				tileList[x-1][y] = (char)7;
+				w.setTileAt((char)0, x, y);
+				w.setTileAt((char)7, x-1, y);
 				return;
 			}
 		}
 		return;
-	}
-	
+	}	
 }

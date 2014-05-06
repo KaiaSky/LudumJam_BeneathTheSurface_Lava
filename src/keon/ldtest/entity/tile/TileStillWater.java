@@ -1,10 +1,14 @@
 package keon.ldtest.entity.tile;
 
+import keon.ldtest.entity.TileWorld;
+import keon.ldtest.entity.tiledata.TileData;
+
 public class TileStillWater extends BasicTile {
 
-	public void update(int x, int y, char[][] tileList)
+	@Override
+	public void update(int x, int y, TileWorld w, TileData data)
 	{
-		tileList[x][y] = (char)2;
+		w.setTileAt((char)2, x, y);
 	}
 	
 }

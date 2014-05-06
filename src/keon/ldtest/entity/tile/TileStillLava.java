@@ -1,10 +1,14 @@
 package keon.ldtest.entity.tile;
 
+import keon.ldtest.entity.TileWorld;
+import keon.ldtest.entity.tiledata.TileData;
+
 public class TileStillLava extends BasicTile {
 
-	public void update(int x, int y, char[][] tileList)
+	@Override
+	public void update(int x, int y, TileWorld w, TileData data)
 	{
-		tileList[x][y] = (char)3;
+		w.setTileAt((char)3, x, y);
 	}
 	
 }
